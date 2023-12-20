@@ -34,8 +34,6 @@ class PMPathFilter {
 /// For filter the [AssetPathEntity] on macOS and iOS.
 ///
 /// Also see [PhotoManager.getAssetPathList]
-/// 
-/// {@endtemplate}
 class PMDarwinPathFilter {
   /// For type of the collection.
   ///

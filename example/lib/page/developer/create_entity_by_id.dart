@@ -5,7 +5,7 @@ import 'package:photo_manager/photo_manager.dart';
 import '../detail_page.dart';
 
 class CreateEntityById extends StatefulWidget {
-  const CreateEntityById({super.key});
+  const CreateEntityById({Key? key}) : super(key: key);
 
   @override
   State<CreateEntityById> createState() => _CreateEntityByIdState();

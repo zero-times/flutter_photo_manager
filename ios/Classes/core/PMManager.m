@@ -356,7 +356,6 @@
                                                createDt:createDt
                                                   width:asset.pixelWidth
                                                  height:asset.pixelHeight
-                                                   size:asset.size
                                                duration:(long) asset.duration
                                                    type:type];
     entity.phAsset = asset;

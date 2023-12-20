@@ -8,10 +8,10 @@ import '../util/log.dart';
 
 class VideoWidget extends StatefulWidget {
   const VideoWidget({
-    super.key,
+    Key? key,
     required this.entity,
     this.usingMediaUrl = true,
-  });
+  }) : super(key: key);
 
   final AssetEntity entity;
   final bool usingMediaUrl;

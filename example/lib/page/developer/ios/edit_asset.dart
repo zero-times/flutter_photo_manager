@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:photo_manager/photo_manager.dart';
 
 class EditAssetPage extends StatefulWidget {
-  const EditAssetPage({super.key});
+  const EditAssetPage({Key? key}) : super(key: key);
 
   @override
   State<EditAssetPage> createState() => _EditAssetPageState();

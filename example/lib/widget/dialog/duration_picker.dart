@@ -5,9 +5,9 @@ import '../../util/log.dart';
 
 class DurationPicker extends StatefulWidget {
   const DurationPicker({
-    super.key,
+    Key? key,
     required this.initDuration,
-  });
+  }) : super(key: key);
 
   final Duration initDuration;
 

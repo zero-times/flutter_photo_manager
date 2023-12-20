@@ -6,7 +6,7 @@ import '../model/photo_provider.dart';
 import '../widget/dialog/duration_picker.dart';
 
 class FilterOptionPage extends StatefulWidget {
-  const FilterOptionPage({super.key});
+  const FilterOptionPage({Key? key}) : super(key: key);
 
   @override
   State<FilterOptionPage> createState() => _FilterOptionPageState();
@@ -201,7 +201,7 @@ class _FilterOptionPageState extends State<FilterOptionPage> {
 }
 
 class DarwinPathFilterPage extends StatefulWidget {
-  const DarwinPathFilterPage({super.key});
+  const DarwinPathFilterPage({Key? key}) : super(key: key);
 
   @override
   State<DarwinPathFilterPage> createState() => _DarwinPathFilterPageState();

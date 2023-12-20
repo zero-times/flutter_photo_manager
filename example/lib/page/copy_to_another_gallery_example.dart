@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:photo_manager/photo_manager.dart';
-import 'package:photo_manager_image_provider/photo_manager_image_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../model/photo_provider.dart';
@@ -8,9 +7,9 @@ import '../util/log.dart';
 
 class CopyToAnotherGalleryPage extends StatefulWidget {
   const CopyToAnotherGalleryPage({
-    super.key,
+    Key? key,
     required this.assetEntity,
-  });
+  }) : super(key: key);
 
   final AssetEntity assetEntity;
 

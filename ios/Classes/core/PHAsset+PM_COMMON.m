@@ -240,14 +240,4 @@
     return resource;
 }
 
-- (long long)size {
-  NSArray<PHAssetResource *> *resources = [PHAssetResource assetResourcesForAsset:self];
-  if (resources.count == 0) {
-    return 0;
-  }
-  PHAssetResource *resource = resources.firstObject;
-  long long originFileSize = [[resource valueForKey:@"fileSize"] longLongValue];
-  return originFileSize;
-}
-
 @end

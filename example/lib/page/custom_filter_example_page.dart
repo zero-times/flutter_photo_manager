@@ -7,7 +7,7 @@ import 'custom_filter/custom_filter_sql_page.dart';
 import 'custom_filter/filter_assets_page.dart';
 
 class CustomFilterExamplePage extends StatelessWidget {
-  const CustomFilterExamplePage({super.key});
+  const CustomFilterExamplePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:photo_manager/photo_manager.dart';
 
 class ColumnNamesPage extends StatefulWidget {
-  const ColumnNamesPage({super.key});
+  const ColumnNamesPage({Key? key}) : super(key: key);
 
   @override
   State<ColumnNamesPage> createState() => _ColumnNamesPageState();

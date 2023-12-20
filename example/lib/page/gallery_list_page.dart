@@ -6,7 +6,7 @@ import '../model/photo_provider.dart';
 import '../widget/gallery_item_widget.dart';
 
 class GalleryListPage extends StatefulWidget {
-  const GalleryListPage({super.key});
+  const GalleryListPage({Key? key}) : super(key: key);
 
   @override
   State<GalleryListPage> createState() => _GalleryListPageState();

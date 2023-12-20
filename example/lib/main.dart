@@ -32,7 +32,7 @@ void main() {
 }
 
 class _SimpleExampleApp extends StatelessWidget {
-  const _SimpleExampleApp();
+  const _SimpleExampleApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +40,6 @@ class _SimpleExampleApp extends StatelessWidget {
       value: provider, // This is for the advanced usages.
       child: MaterialApp(
         title: 'Photo Manager Example',
-        theme: ThemeData(
-          colorSchemeSeed: Colors.blue,
-        ),
         builder: (context, child) {
           if (child == null) return const SizedBox.shrink();
           return Banner(
@@ -59,7 +56,7 @@ class _SimpleExampleApp extends StatelessWidget {
 }
 
 class _SimpleExamplePage extends StatefulWidget {
-  const _SimpleExamplePage();
+  const _SimpleExamplePage({Key? key}) : super(key: key);
 
   @override
   _SimpleExamplePageState createState() => _SimpleExamplePageState();

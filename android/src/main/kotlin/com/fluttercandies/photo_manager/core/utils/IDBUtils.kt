@@ -55,7 +55,6 @@ interface IDBUtils {
             BUCKET_DISPLAY_NAME, // dir name 目录名字
             WIDTH, // 宽
             HEIGHT, // 高
-            SIZE, // 文件大小
             ORIENTATION, // 角度
             DATE_ADDED, // 创建时间
             DATE_MODIFIED, // 修改时间
@@ -75,7 +74,6 @@ interface IDBUtils {
             DATE_ADDED, // 创建时间
             WIDTH, // 宽
             HEIGHT, // 高
-            SIZE, // 文件大小
             ORIENTATION, // 角度
             DATE_MODIFIED, // 修改时间
             MIME_TYPE, // mime type
@@ -179,7 +177,7 @@ interface IDBUtils {
         }
 
         val id = getLong(_ID)
-        val date = if (isAboveAndroidQ) {
+        var date = if (isAboveAndroidQ) {
             var tmpTime = getLong(DATE_TAKEN) / 1000
             if (tmpTime == 0L) {
                 tmpTime = getLong(DATE_ADDED)
@@ -192,7 +190,6 @@ interface IDBUtils {
         else getLong(DURATION)
         var width = getInt(WIDTH)
         var height = getInt(HEIGHT)
-        var size = getLong(SIZE)
         val displayName = getString(DISPLAY_NAME)
         val modifiedDate = getLong(DATE_MODIFIED)
         var orientation: Int = getInt(ORIENTATION)
@@ -233,7 +230,6 @@ interface IDBUtils {
             date,
             width,
             height,
-            size,
             getMediaType(type),
             displayName,
             modifiedDate,
@@ -666,7 +662,7 @@ interface IDBUtils {
         selectionArgs: Array<String>?,
         sortOrder: String?
     ): Cursor? {
-        fun log(logFunc: (log: String) -> Unit, cursor: Cursor?) {
+        fun log(logFunc: (log: String) -> Unit) {
             if (LogUtils.isLog) {
                 val sb = StringBuilder()
                 sb.appendLine("uri: $uri")
@@ -674,20 +670,16 @@ interface IDBUtils {
                 sb.appendLine("selection: $selection")
                 sb.appendLine("selectionArgs: ${selectionArgs?.joinToString(", ")}")
                 sb.appendLine("sortOrder: $sortOrder")
-                // format ? in selection and selectionArgs to display in log
-                val sql = selection?.replace("?", "%s")?.format(*selectionArgs ?: emptyArray())
-                sb.appendLine("sql: $sql")
-                sb.appendLine("cursor count: ${cursor?.count}")
                 logFunc(sb.toString())
             }
         }
 
         try {
             val cursor = query(uri, projection, selection, selectionArgs, sortOrder)
-            log(LogUtils::info, cursor)
+            log(LogUtils::info)
             return cursor
         } catch (e: Exception) {
-            log(LogUtils::error, null)
+            log(LogUtils::error)
             LogUtils.error("happen query error", e)
             throw e
         }
@@ -702,36 +694,6 @@ interface IDBUtils {
             return it?.count ?: 0
         }
     }
-
-    fun getAssetCount(
-        context: Context,
-        option: FilterOption,
-        requestType: Int,
-        galleryId: String,
-    ): Int {
-        val cr = context.contentResolver
-        val args = ArrayList<String>()
-        var where = option.makeWhere(requestType, args, false)
-
-        run {
-            val result = StringBuilder(where)
-            if (galleryId != PhotoManager.ALL_ID) {
-                if (result.trim().isNotEmpty()) {
-                    result.append(" AND ")
-                }
-                result.append("$BUCKET_ID = ?")
-                args.add(galleryId)
-            }
-
-            where = result.toString()
-        }
-
-        val order = option.orderByCondString()
-        cr.logQuery(allUri, arrayOf(_ID), where, args.toTypedArray(), order).use {
-            return it?.count ?: 0
-        }
-    }
-
 
     fun getAssetsByRange(
         context: Context,

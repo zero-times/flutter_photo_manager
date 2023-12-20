@@ -41,21 +41,19 @@ class Methods {
         const val getAssetPathList = "getAssetPathList"
         const val getAssetListPaged = "getAssetListPaged"
         const val getAssetListRange = "getAssetListRange"
-        const val getAssetCountFromPath = "getAssetCountFromPath"
         const val getAssetCount = "getAssetCount"
         const val getAssetsByRange = "getAssetsByRange"
 
-        private val haveRequestTypeMethods = arrayOf(
+        val haveRequestTypeMethods = arrayOf(
             fetchPathProperties,
             getAssetPathList,
             getAssetListPaged,
-            getAssetCountFromPath,
             getAssetListRange,
             getAssetCount,
             getAssetsByRange,
         )
 
-        private fun isHaveRequestTypeMethod(method: String): Boolean {
+        fun isHaveRequestTypeMethod(method: String): Boolean {
             return method in haveRequestTypeMethods
         }
         /// Have [requestType] end
@@ -83,17 +81,16 @@ class Methods {
         const val removeNoExistsAssets = "removeNoExistsAssets"
         const val getColumnNames = "getColumnNames"
 
-        private val needMediaLocationMethods = arrayOf(
+        val needMediaLocationMethods = arrayOf(
             getLatLng,
             getFullFile,
             getOriginBytes,
         )
 
-        private fun isNeedMediaLocationMethod(method: String): Boolean {
+        fun isNeedMediaLocationMethod(method: String): Boolean {
             return method in needMediaLocationMethods
         }
 
-        @Suppress("unused")
         fun otherMethods(method: String): Boolean {
             return (isNotNeedPermissionMethod(method) ||
                     isPermissionMethod(method) ||

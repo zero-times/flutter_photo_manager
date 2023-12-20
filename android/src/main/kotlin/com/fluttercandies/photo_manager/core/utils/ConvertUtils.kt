@@ -49,7 +49,6 @@ object ConvertUtils {
             "createDt" to entity.createDt,
             "width" to entity.width,
             "height" to entity.height,
-            "size" to entity.size,
             "orientation" to entity.orientation,
             "modifiedDt" to entity.modifiedDate,
             "lat" to entity.lat,

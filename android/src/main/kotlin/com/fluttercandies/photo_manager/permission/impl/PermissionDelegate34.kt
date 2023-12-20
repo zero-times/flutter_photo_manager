@@ -32,22 +32,17 @@ class PermissionDelegate34 : PermissionDelegate() {
         requestType: Int,
         mediaLocation: Boolean
     ) {
-        if (havePermissions(context, requestType)) {
-            permissionsUtils.permissionsListener?.onGranted(mutableListOf())
-            return
-        }
-
-        LogUtils.info("requestPermission")
+        LogUtils.debug("requestPermission")
         var havePermission = true
 
         val containsImage = RequestTypeUtils.containsImage(requestType)
         val containsVideo = RequestTypeUtils.containsVideo(requestType)
         val containsAudio = RequestTypeUtils.containsAudio(requestType)
 
-        val requiredPermissions = mutableListOf<String>()
+        val permissions = mutableListOf<String>()
 
         if (containsVideo || containsImage) {
-            requiredPermissions.add(mediaVisualUserSelected)
+            permissions.add(mediaVisualUserSelected)
             // check have media visual user selected permission, the permission does not need to be defined in the manifest.
             val haveMediaVisualUserSelected =
                 havePermissionForUser(context, mediaVisualUserSelected)
@@ -55,32 +50,32 @@ class PermissionDelegate34 : PermissionDelegate() {
             havePermission = haveMediaVisualUserSelected
 
             if (mediaLocation) {
-                requiredPermissions.add(mediaLocationPermission)
+                permissions.add(mediaLocationPermission)
                 havePermission = havePermission && havePermission(context, mediaLocationPermission)
             }
 
             if (containsVideo) {
-                requiredPermissions.add(mediaVideo)
+                permissions.add(mediaVideo)
             }
 
             if (containsImage) {
-                requiredPermissions.add(mediaImage)
+                permissions.add(mediaImage)
             }
 
         }
 
         if (containsAudio) {
-            requiredPermissions.add(mediaAudio)
+            permissions.add(mediaAudio)
             havePermission = havePermission && havePermission(context, mediaAudio)
         }
 
-        LogUtils.info("Current permissions: $requiredPermissions")
-        LogUtils.info("havePermission: $havePermission")
+        LogUtils.debug("Current permissions: $permissions")
+        LogUtils.debug("havePermission: $havePermission")
 
         if (havePermission) {
-            permissionsUtils.permissionsListener?.onGranted(requiredPermissions)
+            permissionsUtils.permissionsListener?.onGranted(permissions)
         } else {
-            requestPermission(permissionsUtils, requiredPermissions)
+            requestPermission(permissionsUtils, permissions)
         }
     }
 
@@ -189,7 +184,7 @@ class PermissionDelegate34 : PermissionDelegate() {
             permissions.add(mediaImage)
         }
 
-        requestPermission(permissionsUtils, permissions, limitedRequestCode)
+        requestPermission(permissionsUtils, permissions)
     }
 
     override fun getAuthValue(

@@ -32,7 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (PHAssetResource *)getUntouchedResource;
 - (void)requestAdjustedData:(void (^)(NSData *_Nullable result))block;
 - (PHAssetResource *)getLivePhotosResource;
-- (long long)size;
 
 @end
 

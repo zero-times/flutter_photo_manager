@@ -4,9 +4,9 @@ import 'package:photo_manager_example/page/custom_filter/order_by_action.dart';
 
 class AdvancedCustomFilterPage extends StatefulWidget {
   const AdvancedCustomFilterPage({
-    super.key,
+    Key? key,
     required this.builder,
-  });
+  }) : super(key: key);
 
   final Widget Function(BuildContext context, CustomFilter filter) builder;
 
@@ -82,11 +82,11 @@ class _AdvancedCustomFilterPageState extends State<AdvancedCustomFilterPage> {
 
 class WhereAction extends StatelessWidget {
   const WhereAction({
-    super.key,
+    Key? key,
     required this.where,
     required this.onChanged,
     // required this
-  });
+  }) : super(key: key);
 
   final List<WhereConditionItem> where;
   final ValueChanged<List<WhereConditionItem>> onChanged;
@@ -113,8 +113,9 @@ class WhereAction extends StatelessWidget {
 
 class _WhereConditionPage extends StatefulWidget {
   const _WhereConditionPage({
+    Key? key,
     required this.where,
-  });
+  }) : super(key: key);
 
   final List<WhereConditionItem> where;
 
@@ -133,15 +134,11 @@ class _WhereConditionPageState extends State<_WhereConditionPage> {
     _where.addAll(widget.where);
   }
 
-  void _onWillPop(bool didPop) {
-    if (didPop) {
-      return;
-    }
+  Future<bool> _onWillPop() {
     if (!isChanged) {
-      Navigator.of(context).pop();
-      return;
+      return Future.value(true);
     }
-    showDialog(
+    return showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
@@ -151,14 +148,13 @@ class _WhereConditionPageState extends State<_WhereConditionPage> {
             TextButton(
               child: const Text('No'),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(false);
               },
             ),
             TextButton(
               child: const Text('Yes'),
               onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(true);
               },
             ),
           ],
@@ -169,9 +165,8 @@ class _WhereConditionPageState extends State<_WhereConditionPage> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      onPopInvoked: _onWillPop,
+    return WillPopScope(
+      onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Where Condition'),
@@ -231,7 +226,7 @@ class _WhereConditionPageState extends State<_WhereConditionPage> {
 }
 
 class _CreateWhereDialog extends StatefulWidget {
-  const _CreateWhereDialog();
+  const _CreateWhereDialog({Key? key}) : super(key: key);
 
   @override
   State<_CreateWhereDialog> createState() => _CreateWhereDialogState();

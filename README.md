@@ -11,7 +11,7 @@ English | [中文](README-ZH.md)
 [![Build status](https://img.shields.io/github/actions/workflow/status/fluttercandies/flutter_photo_manager/runnable.yml?branch=main&label=CI&logo=github&style=flat-square)](https://github.com/fluttercandies/flutter_photo_manager/actions/workflows/runnable.yml)
 [![GitHub license](https://img.shields.io/github/license/fluttercandies/flutter_photo_manager)](https://github.com/fluttercandies/flutter_photo_manager/blob/main/LICENSE)
 
-[![GitHub stars](https://img.shields.io/github/stars/fluttercandies/flutter_photo_manager?logo=github&style=flat-square)](https://github.com/fluttercandies/flutter_photo_manager/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/fluttercandies/flutter_photo_manager?style=social&label=Stars)](https://github.com/fluttercandies/flutter_photo_manager/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/fluttercandies/flutter_photo_manager?logo=github&style=flat-square)](https://github.com/fluttercandies/flutter_photo_manager/network)
 [![Awesome Flutter](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/Solido/awesome-flutter)
 <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5bcc0gy"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="FlutterCandies" title="FlutterCandies"></a>
@@ -88,8 +88,8 @@ see the [migration guide](MIGRATION_GUIDE.md) for detailed info.
   * [Native extra configs](#native-extra-configs)
     * [Android extra configs](#android-extra-configs)
       * [Glide issues](#glide-issues)
-      * [Android 14 (API 34) extra configs](#android-14-api-34-extra-configs)
-      * [Android 13 (API 33) extra configs](#android-13-api-33-extra-configs)
+      * [Android 14 (Api 34) extra configs](#android-14-api-34-extra-configs)
+      * [Android 13 (Api 33) extra configs](#android-13-api-33-extra-configs)
     * [iOS extra configs](#ios-extra-configs)
       * [Localized system albums name](#localized-system-albums-name)
     * [Experimental features](#experimental-features)
@@ -99,7 +99,6 @@ see the [migration guide](MIGRATION_GUIDE.md) for detailed info.
       * [Features for Android only](#features-for-android-only)
         * [Move an entity to another album](#move-an-entity-to-another-album)
         * [Remove all non-exist entities](#remove-all-non-exist-entities)
-        * [Move entities to trash](#move-entities-to-trash)
       * [Features for iOS or macOS](#features-for-ios-or-macos)
         * [Create a folder](#create-a-folder)
         * [Create an album](#create-an-album)
@@ -431,15 +430,10 @@ when the file is downloading.
 
 #### Display assets
 
-> Starts from v3.0.0, `AssetEntityImage` and `AssetEntityImageProvider`
-> are provided in the
-> [`photo_manager_image_provider`][photo_manager_image_provider] package.
-
-Use the `AssetEntityImage` widget or the `AssetEntityImageProvider` to display assets:
+The plugin provided the `AssetEntityImage` widget and
+the `AssetEntityImageProvider` to display assets:
 
 ```dart
-import 'package:photo_manager_image_provider/photo_manager_image_provider.dart';
-
 final Widget image = AssetEntityImage(
   yourAssetEntity,
   isOriginal: false, // Defaults to `true`.
@@ -773,18 +767,16 @@ rootProject.allprojects {
 See [ProGuard for Glide](https://github.com/bumptech/glide#proguard)
 if you want to know more about using ProGuard and Glide together.
 
-#### Android 14 (API 34) extra configs
+#### Android 14 (Api 34) extra configs
 
 When targeting Android 14 (API level 34),
 the following extra configs needs to be added to the manifest:
 
 ```xml
-<manifest>
-    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />  <!-- If you want to use the limited access feature. -->
-</manifest>
+<uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />  <!-- If you want to use the limited access feature, it is an optional permission. -->
 ```
 
-#### Android 13 (API 33) extra configs
+#### Android 13 (Api 33) extra configs
 
 When targeting Android 13 (API level 33),
 the following extra configs needs to be added to the manifest:
@@ -932,9 +924,8 @@ and your customers accept repeatedly confirmations.
 await PhotoManager.editor.android.moveToTrash(list);
 ```
 
-The method supports Android 11 and above versions.
-It will move the entities to trash.
-Throws exception when calling on Android 11-.
+The method support android 30 or higher. It will move the entities to trash.
+If the method is called on android 29 or lower, it will throw an exception.
 
 #### Features for iOS or macOS
 
@@ -1009,4 +1000,3 @@ PhotoManager.editor.darwin.deletePath();
 [`LocallyAvailableBuilder`]: https://github.com/fluttercandies/flutter_wechat_assets_picker/blob/2055adfa74370339d10e6f09adef72f2130d2380/lib/src/widget/builder/locally_available_builder.dart
 
 [flutter/flutter#20522]: https://github.com/flutter/flutter/issues/20522
-[photo_manager_image_provider]: https://pub.dev/packages/photo_manager_image_provider

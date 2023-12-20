@@ -58,6 +58,7 @@ class ConvertUtils {
       id: data['id'] as String,
       name: data['name'] as String,
       // ignore: deprecated_member_use_from_same_package
+      assetCount: data['assetCount'] as int? ?? 0,
       albumType: data['albumType'] as int? ?? 1,
       filterOption: filterOption ?? FilterOptionGroup(),
       lastModified: lastModified,
@@ -82,7 +83,6 @@ class ConvertUtils {
       typeInt: data['type'] as int,
       width: data['width'] as int,
       height: data['height'] as int,
-      filesize: data['size'] as int,
       duration: data['duration'] as int? ?? 0,
       orientation: data['orientation'] as int? ?? 0,
       isFavorite: data['favorite'] as bool? ?? false,
