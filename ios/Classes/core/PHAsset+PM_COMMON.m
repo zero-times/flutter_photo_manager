@@ -253,7 +253,7 @@
 - (NSString*)originalFilename {
   NSArray<PHAssetResource *> *resources = [PHAssetResource assetResourcesForAsset:self];
   if (resources.count == 0) {
-    return @"";
+    return "";
   }
   PHAssetResource *resource = resources.firstObject;
   return resource.originalFilename;
@@ -262,11 +262,11 @@
 - (NSString*)privateFileURL {
   NSArray<PHAssetResource *> *resources = [PHAssetResource assetResourcesForAsset:self];
   if (resources.count == 0) {
-    return @"";
+    return "";
   }
   PHAssetResource *resource = resources.firstObject;
   NSString * privateFileURL = [[resource valueForKey:@"privateFileURL"] stringValue];
-  return privateFileURL;
+  return originFileSize;
 }
 
 @end
