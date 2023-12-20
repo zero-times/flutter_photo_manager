@@ -183,8 +183,7 @@ class AssetPathEntity {
     required int size,
   }) {
     assert(albumType == 1, 'Only album can request for assets.');
-    assert(size > 0, 'Page size must be greater than 0.');
-
+    assert(size >= 0, 'Page size must be greater than -1.'); // await assetPath.assetCountAsync may be 0
     final filterOption = this.filterOption;
 
     if (filterOption is FilterOptionGroup) {
@@ -335,6 +334,7 @@ class AssetEntity {
     required this.typeInt,
     required this.width,
     required this.height,
+    required this.filesize,
     this.duration = 0,
     this.orientation = 0,
     this.isFavorite = false,
@@ -431,6 +431,9 @@ class AssetEntity {
   ///
   /// This field could be 0 in cases that EXIF info is failed to parse.
   final int height;
+  
+  /// The file size of the asset.
+  final int filesize;
 
   bool get _isLandscape => orientation == 90 || orientation == 270;
 
@@ -788,6 +791,7 @@ class AssetEntity {
     int? typeInt,
     int? width,
     int? height,
+    int? filesize,
     int? duration,
     int? orientation,
     bool? isFavorite,
@@ -805,6 +809,7 @@ class AssetEntity {
       typeInt: typeInt ?? this.typeInt,
       width: width ?? this.width,
       height: height ?? this.height,
+      filesize: filesize ?? this.filesize,
       duration: duration ?? this.duration,
       orientation: orientation ?? this.orientation,
       isFavorite: isFavorite ?? this.isFavorite,

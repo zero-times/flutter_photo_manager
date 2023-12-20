@@ -32,23 +32,24 @@
 
 @implementation PMAssetEntity {}
 
-- (instancetype)initWithId:(NSString *)id createDt:(long)createDt width:(NSUInteger)width height:(NSUInteger)height
-duration:(long)duration type:(int)type {
+- (instancetype)initWithId:(NSString *)id createDt:(long)createDt width:(NSUInteger)width height:(NSUInteger)height size:(long long)size
+duration:(long)duration type:(int)type  {
     self = [super init];
     if (self) {
         self.id = id;
         self.createDt = createDt;
         self.width = width;
         self.height = height;
+        self.size = size;
         self.duration = duration;
         self.type = type;
     }
     return self;
 }
 
-+ (instancetype)entityWithId:(NSString *)id createDt:(long)createDt width:(NSUInteger)width height:(NSUInteger)height
++ (instancetype)entityWithId:(NSString *)id createDt:(long)createDt width:(NSUInteger)width height:(NSUInteger)height size:(long long)size
 duration:(long)duration type:(int)type {
-    return [[self alloc] initWithId:id createDt:createDt width:width height:height duration:duration type:type];
+    return [[self alloc] initWithId:id createDt:createDt width:width height:height size: size duration:duration type:type];
 }
 
 
