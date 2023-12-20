@@ -32,15 +32,8 @@
 
 @implementation PMAssetEntity {}
 
-- (instancetype)initWithId:(NSString *)id
-createDt:(long)createDt
-width:(NSUInteger)width
-height:(NSUInteger)height
-size:(long long)size
-originalFilename:(NSString *)originalFilename
-privateFileURL:(NSString *)privateFileURL
-duration:(long)duration
-type:(int)type  {
+- (instancetype)initWithId:(NSString *)id createDt:(long)createDt width:(NSUInteger)width height:(NSUInteger)height size:(long long)size
+duration:(long)duration type:(int)type  {
     self = [super init];
     if (self) {
         self.id = id;
@@ -48,24 +41,15 @@ type:(int)type  {
         self.width = width;
         self.height = height;
         self.size = size;
-        self.originalFilename = originalFilename;
-        self.privateFileURL = privateFileURL;
         self.duration = duration;
         self.type = type;
     }
     return self;
 }
 
-+ (instancetype)entityWithId:(NSString *)id
-createDt:(long)createDt
-width:(NSUInteger)width
-height:(NSUInteger)height
-size:(long long)size
-originalFilename:(NSString *)originalFilename
-privateFileURL:(NSString *)privateFileURL
-duration:(long)duration
-type:(int)type {
-    return [[self alloc] initWithId:id createDt:createDt width:width height:height size: size originalFilename:originalFilename privateFileURL:privateFileURL duration:duration type:type];
++ (instancetype)entityWithId:(NSString *)id createDt:(long)createDt width:(NSUInteger)width height:(NSUInteger)height size:(long long)size
+duration:(long)duration type:(int)type {
+    return [[self alloc] initWithId:id createDt:createDt width:width height:height size: size duration:duration type:type];
 }
 
 

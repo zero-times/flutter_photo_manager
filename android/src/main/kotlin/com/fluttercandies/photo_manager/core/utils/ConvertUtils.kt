@@ -50,8 +50,6 @@ object ConvertUtils {
             "width" to entity.width,
             "height" to entity.height,
             "size" to entity.size,
-            "originalFilename" to entity.originalFilename,
-            "privateFileURL" to entity.privateFileURL,
             "orientation" to entity.orientation,
             "modifiedDt" to entity.modifiedDate,
             "lat" to entity.lat,

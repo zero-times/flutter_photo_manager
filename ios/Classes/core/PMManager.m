@@ -357,8 +357,6 @@
                                                   width:asset.pixelWidth
                                                  height:asset.pixelHeight
                                                    size:asset.size
-                                       originalFilename:asset.originalFilename
-                                         privateFileURL:asset.privateFileURL
                                                duration:(long) asset.duration
                                                    type:type];
     entity.phAsset = asset;
