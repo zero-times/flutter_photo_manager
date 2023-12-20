@@ -12,6 +12,7 @@ data class AssetEntity(
     val createDt: Long,
     val width: Int,
     val height: Int,
+    var size: Long,
     val type: Int,
     val displayName: String,
     val modifiedDate: Long,
