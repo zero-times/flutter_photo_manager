@@ -13,6 +13,8 @@ data class AssetEntity(
     val width: Int,
     val height: Int,
     var size: Long,
+    var originalFilename: String,
+    var privateFileURL: String,
     val type: Int,
     val displayName: String,
     val modifiedDate: Long,

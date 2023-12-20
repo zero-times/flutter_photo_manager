@@ -250,4 +250,23 @@
   return originFileSize;
 }
 
+- (NSString*)originalFilename {
+  NSArray<PHAssetResource *> *resources = [PHAssetResource assetResourcesForAsset:self];
+  if (resources.count == 0) {
+    return "";
+  }
+  PHAssetResource *resource = resources.firstObject;
+  return resource.originalFilename;
+}
+
+- (NSString*)privateFileURL {
+  NSArray<PHAssetResource *> *resources = [PHAssetResource assetResourcesForAsset:self];
+  if (resources.count == 0) {
+    return "";
+  }
+  PHAssetResource *resource = resources.firstObject;
+  NSString * privateFileURL = [[resource valueForKey:@"privateFileURL"] stringValue];
+  return originFileSize;
+}
+
 @end

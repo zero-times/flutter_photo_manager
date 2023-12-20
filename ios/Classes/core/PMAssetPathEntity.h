@@ -26,6 +26,8 @@
 @property(nonatomic, assign) NSUInteger width;
 @property(nonatomic, assign) NSUInteger height;
 @property(nonatomic, assign) long long size;
+@property(nonatomic, copy) NSString *originalFilename;
+@property(nonatomic, copy) NSString *privateFileURL;
 @property(nonatomic, assign) long duration;
 @property(nonatomic, assign) int type;
 @property(nonatomic, strong) PHAsset *phAsset;
@@ -42,6 +44,8 @@
                      width:(NSUInteger)width
                     height:(NSUInteger)height
                       size:(long long)size
+          originalFilename:(NSString *)originalFilename
+            privateFileURL:(NSString *)privateFileURL
                   duration:(long)duration
                       type:(int)type;
 
@@ -50,6 +54,8 @@
                        width:(NSUInteger)width
                       height:(NSUInteger)height
                         size:(long long)size
+            originalFilename:(NSString *)originalFilename
+              privateFileURL:(NSString *)privateFileURL
                     duration:(long)duration
                         type:(int)type;
 

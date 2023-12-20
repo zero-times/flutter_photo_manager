@@ -56,6 +56,8 @@ interface IDBUtils {
             WIDTH, // 宽
             HEIGHT, // 高
             SIZE, // 文件大小
+            ORIGINALFILENAME, // 文件名
+            PRIVATEFILEURL, // 文件路径
             ORIENTATION, // 角度
             DATE_ADDED, // 创建时间
             DATE_MODIFIED, // 修改时间
@@ -76,6 +78,8 @@ interface IDBUtils {
             WIDTH, // 宽
             HEIGHT, // 高
             SIZE, // 文件大小
+            ORIGINALFILENAME, // 文件名
+            PRIVATEFILEURL, // 文件路径
             ORIENTATION, // 角度
             DATE_MODIFIED, // 修改时间
             MIME_TYPE, // mime type
@@ -193,6 +197,9 @@ interface IDBUtils {
         var width = getInt(WIDTH)
         var height = getInt(HEIGHT)
         var size = getLong(SIZE)
+        val originalFilename = getString(ORIGINALFILENAME)
+        val privateFileURL = getString(PRIVATEFILEURL)
+        val displayName = getString(DISPLAY_NAME)
         val displayName = getString(DISPLAY_NAME)
         val modifiedDate = getLong(DATE_MODIFIED)
         var orientation: Int = getInt(ORIENTATION)
@@ -234,6 +241,8 @@ interface IDBUtils {
             width,
             height,
             size,
+            originalFilename,
+            privateFileURL,
             getMediaType(type),
             displayName,
             modifiedDate,

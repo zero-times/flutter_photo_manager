@@ -335,6 +335,8 @@ class AssetEntity {
     required this.width,
     required this.height,
     required this.filesize,
+    required this.originalFilename,
+    required this.privateFileURL,
     this.duration = 0,
     this.orientation = 0,
     this.isFavorite = false,
@@ -434,6 +436,11 @@ class AssetEntity {
   
   /// The file size of the asset.
   final int filesize;
+
+  final String originalFilename;
+
+  final String privateFileURL;
+
 
   bool get _isLandscape => orientation == 90 || orientation == 270;
 
@@ -792,6 +799,8 @@ class AssetEntity {
     int? width,
     int? height,
     int? filesize,
+    String? originalFilename,
+    String? privateFileURL,
     int? duration,
     int? orientation,
     bool? isFavorite,
@@ -810,6 +819,8 @@ class AssetEntity {
       width: width ?? this.width,
       height: height ?? this.height,
       filesize: filesize ?? this.filesize,
+      originalFilename: originalFilename ?? this.originalFilename,
+      privateFileURL: privateFileURL ?? this.privateFileURL,
       duration: duration ?? this.duration,
       orientation: orientation ?? this.orientation,
       isFavorite: isFavorite ?? this.isFavorite,

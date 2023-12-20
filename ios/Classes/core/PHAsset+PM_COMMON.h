@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)requestAdjustedData:(void (^)(NSData *_Nullable result))block;
 - (PHAssetResource *)getLivePhotosResource;
 - (long long)size;
+- (nullable NSString*)originalFilename;
+- (nullable NSString*)privateFileURL;
 
 @end
 

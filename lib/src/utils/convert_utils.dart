@@ -84,6 +84,8 @@ class ConvertUtils {
       width: data['width'] as int,
       height: data['height'] as int,
       filesize: data['size'] as int,
+      originalFilename: data['originalFilename'] as String,
+      privateFileURL: data['privateFileURL'] as String,
       duration: data['duration'] as int? ?? 0,
       orientation: data['orientation'] as int? ?? 0,
       isFavorite: data['favorite'] as bool? ?? false,
