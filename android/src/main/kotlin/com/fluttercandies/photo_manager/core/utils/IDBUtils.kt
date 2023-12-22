@@ -26,6 +26,7 @@ import android.provider.MediaStore.MediaColumns.RELATIVE_PATH
 import android.provider.MediaStore.MediaColumns.TITLE
 import android.provider.MediaStore.MediaColumns.WIDTH
 import android.provider.MediaStore.MediaColumns._ID
+import android.provider.MediaStore.MediaColumns.SIZE
 import android.provider.MediaStore.VOLUME_EXTERNAL
 import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.exifinterface.media.ExifInterface
