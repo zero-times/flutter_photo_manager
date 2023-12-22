@@ -277,8 +277,7 @@ object DBUtils : IDBUtils {
             MediaStore.Video.VideoColumns.LONGITUDE,
             MediaStore.Video.VideoColumns.LATITUDE,
             MediaStore.MediaColumns.WIDTH,
-            MediaStore.MediaColumns.HEIGHT,
-            MediaStore.MediaColumns.SIZE,
+            MediaStore.MediaColumns.HEIGHT
         )
         val mediaType = convertTypeToMediaType(asset.type)
         if (mediaType != MediaStore.Files.FileColumns.MEDIA_TYPE_AUDIO) {
